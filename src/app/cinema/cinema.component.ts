@@ -8,6 +8,8 @@ import {CinemaService} from '../services/cinema.service';
   templateUrl: './cinema.component.html',
   styleUrls: ['./cinema.component.css']
 })
+
+
 export class CinemaComponent implements OnInit {
   public villes;
   public cinemas;
@@ -55,8 +57,8 @@ export class CinemaComponent implements OnInit {
             })
         })
       }, err => {
-        console.log(err);
-      })
+          console.log(err);
+        })
   }
 
   onGetPlaces(p) {

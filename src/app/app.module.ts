@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { formatDate } from '@angular/common';
 import { AppComponent } from './app.component';
 import { CinemaComponent } from './cinema/cinema.component';
 import { AppRoutingModule } from './app-routing.module';
