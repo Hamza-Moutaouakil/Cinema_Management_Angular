@@ -6,17 +6,19 @@
         (click)="onGetCinemas(v)">
           {{v.name}}</li>
       </ul>
+
     </div>
     <div class="col-md-9">
       <div class="panel panel-default">
         <div class="panel-heading">Liste des Cinemas</div>
-        <div class="panel-body">
+        <div>
+
           <ul *ngIf="cinemas" class="nav nav-pills">
-            <li [ngClass]="c==currentCinema? 'active':''" *ngFor="let c of cinemas._embedded.cinemas" class="clicable">
+            <li [ngClass]="c==currentCinema? 'active':''" *ngFor="let c of cinemas._embedded.cinemas" class="clicable" style="margin-top: 5px;margin-left: 15px">
               <a (click)="onGetSalles(c)">{{c.name}}</a>
             </li>
           </ul>
-          <div *ngIf="salles" class="row">
+          <div *ngIf="salles" class="row" style="margin-top: 5px ">
             <div *ngFor="let s of salles._embedded.salles" class="col-md-6">
               <div class="panel panel-default">
                 <div class="panel-heading">{{s.name}}</div>
@@ -27,9 +29,11 @@
                     </div>
                     <div class="col-md-7">
                       <ul class="list-group">
-                        <li class="list-group-item">Seances : </li>
+                        <li class="list-group-item black">Seances : </li>
                         <li [ngClass]="p==currentProjection? 'active':''" *ngFor="let p of s.projections._embedded.projections" class="list-group-item clicable" (click)="onGetPlaces(p)">
-                          {{p.seance.heureDebut}} => Prix : {{p.prix|number:'0.00'}} DH
+                          {{p.seance.heureDebut}}
+                          -->
+                          Prix : {{p.prix|number:'0.00'}} DH
                         </li>
                       </ul>
                     </div>
@@ -61,6 +65,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div *ngIf="!cinemas" class="alert alert-danger" role="alert">
+        Aucune Cinéma n'est selectionné !
       </div>
     </div>
   </div>

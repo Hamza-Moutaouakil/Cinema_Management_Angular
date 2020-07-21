@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {CinemaService} from '../services/cinema.service';
+import {isEmpty} from "rxjs/operators";
+
 
 
 @Component({
@@ -98,13 +100,18 @@ export class CinemaComponent implements OnInit {
     this.selectedTicket.forEach(t => {
       tickets.push(t.id);
     });
-    dataForm.tickets = tickets;
-    this.cinemaService.payerTickets(dataForm)
-      .subscribe(data => {
-        alert("Tickets Reserves avec Succes!!");
-        this.onGetPlaces(this.currentProjection);
-      }, err => {
-        console.log(err);
-      })
+    console.log("values :")
+    if(dataForm.nomClient != "" && dataForm.codePayment!= ""){
+      dataForm.tickets = tickets;
+      this.cinemaService.payerTickets(dataForm)
+        .subscribe(data => {
+          alert("Tickets Reserves avec Succes!!");
+          this.onGetPlaces(this.currentProjection);
+        }, err => {
+          console.log(err);
+        })
+    }else{
+      alert("Empty fields !!")
+    }
   }
 }
